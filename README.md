@@ -23,7 +23,7 @@ A feature that sends an email via Gmail once image generation is completed in Co
 
 ## Usage
 
-![Image 3](docs/images/install02.jpg)
+![Image 3](docs/images/usage01.jpg)
 1. Enter your Gmail email address in `sender_email`.
 2. Generate and enter your Gmail app password in `sender_password` (do not enter your Gmail account password).
    - Link for creating app password: [Google App Passwords](https://myaccount.google.com/apppasswords)
