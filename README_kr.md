@@ -1,6 +1,6 @@
 # Comfy-UI on-complete-email-me
 
-[English](./README.md) | [한국어](./README_kr.md)
+[English](/) | [한국어](./README_kr.md)
 ---
 
 Comfy-ui 에서 이미지 생성이 완료되면 Gmail로 이메일을 발송하는 기능입니다.
