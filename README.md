@@ -32,4 +32,5 @@ A feature that sends an email via Gmail once image generation is completed in Co
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the GPL-3.0 License. See the LICENSE file for details.
+
