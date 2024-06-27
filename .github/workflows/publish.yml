@@ -1,29 +1,28 @@
-name: hyunamy
+name: Publish to Comfy registry
 on:
-  # 수동으로 워크플로우를 실행할 수 있는 기능을 추가
   workflow_dispatch:
   push:
     branches:
-      - master  # 'master' 브랜치에서 push 이벤트 발생 시 실행
+      - master
     paths:
-      - "pyproject.toml"  # 'pyproject.toml' 파일이 변경될 때만 실행
+      - "pyproject.toml"
 
 jobs:
   publish-node:
-    name: Publish Custom Node
+    name: Publish Custom Node to registry
     runs-on: ubuntu-latest
-    # 포크된 저장소인 경우 워크플로우 건너뛰기
+    # if this is a forked repository. Skipping the workflow.
     if: github.event.repository.fork == false 
     steps:
       - name: Check out code
-        uses: actions/checkout@v4  # 최신 버전의 checkout 액션 사용
+        uses: actions/checkout@v4
       - name: Publish Custom Node
         uses: Comfy-Org/publish-node-action@main
         with:
-          # GitHub Repository secrets에 추가한 개인 접근 토큰 사용
+          ## Add your own personal access token to your Github Repository secrets and reference it here.
           personal_access_token: ${{ secrets.REGISTRY_ACCESS_TOKEN }}
-
-      # 추가: 오류 발생 시 알림을 보내는 단계 (선택 사항)
+          
+        # 추가: 오류 발생 시 알림을 보내는 단계 (선택 사항)
       - name: Notify on failure
         if: failure()
         runs-on: ubuntu-latest
