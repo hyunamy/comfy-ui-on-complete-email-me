@@ -1,0 +1,15 @@
+[project]
+name = "comfy-ui-on-complete-email-me"
+description = "A feature that sends an email via Gmail once image generation is completed in Comfy-ui."
+version = "1.0.0"
+license = "LICENSE"
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/hyunamy/comfy-ui-on-complete-email-me"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "comfy-ui-on-complete-email-me"
+Icon = ""
