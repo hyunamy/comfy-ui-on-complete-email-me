@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - "/pyproject.toml"
+      - "pyproject.toml"
 
 jobs:
   publish-node:
@@ -19,15 +19,4 @@ jobs:
       - name: Publish Custom Node
         uses: Comfy-Org/publish-node-action@main
         with:
-          ## Add your own personal access token to your Github Repository secrets and reference it here.
           personal_access_token: ${{ secrets.REGISTRY_ACCESS_TOKEN }}
-          
-        # 추가: 오류 발생 시 알림을 보내는 단계 (선택 사항)
-      - name: Notify on failure
-        if: failure()
-        runs-on: ubuntu-latest
-        steps:
-          - name: Send notification
-            uses: some/notification-action@v1
-            with:
-              message: "Publishing failed!"
