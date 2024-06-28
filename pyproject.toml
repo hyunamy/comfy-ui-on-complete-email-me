@@ -1,5 +1,5 @@
 [project]
-name = "comfy-ui-on-complete-email-me"
+name = "hyunamy"
 description = "A feature that sends an email via Gmail once image generation is completed in Comfy-ui."
 authors = ["bobdoduk <hyunamy@naver.com>"]
 version = "1.0.0"
