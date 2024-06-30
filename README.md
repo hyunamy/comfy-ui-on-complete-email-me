@@ -31,6 +31,7 @@ A feature that sends an email via Gmail once image generation is completed in Co
 4. Enter the message to be sent.
 
 ![Image 4](docs/images/usage02.jpg)
+
 **OnCompleteWebhook Node**
 We have added a new node called OnCompleteWebhook. This node allows you to send a webhook notification upon the completion of a certain task or event.
 
