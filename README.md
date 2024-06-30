@@ -30,6 +30,24 @@ A feature that sends an email via Gmail once image generation is completed in Co
 3. Enter the list of recipient email addresses (separated by Enter key).
 4. Enter the message to be sent.
 
+![Image 4](docs/images/usage02.jpg)
+OnCompleteWebhook Node
+We have added a new node called OnCompleteWebhook. This node allows you to send a webhook notification upon the completion of a certain task or event.
+
+Usage
+Create the OnCompleteWebhook Node:
+
+Follow the instructions to create the OnCompleteWebhook node in your workflow.
+Configure the Webhook URL:
+
+Set the webhook URL to the endpoint where you want to receive the notification.
+Trigger the Node:
+
+Ensure the node is triggered upon the completion of the desired task or event.
+By using the OnCompleteWebhook node, you can integrate with external services and get notified about the completion of various processes.
+
+Please update your workflows and check out the new functionality.
+
 ## License
 
 This project is licensed under the GPL-3.0 License. See the LICENSE file for details.
