@@ -1,9 +1,7 @@
 import smtplib
 import re
-
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 import comfy.utils
+import requests
 
 def is_valid_email(email):
     # Regular expression for validating an email address
@@ -159,16 +157,68 @@ class OnCompleteEmailMe:
     #def IS_CHANGED(s, image, string_field, int_field, float_field, print_to_screen):
     #    return ""
 
+class OnCompleteWebhook:
+    def __init__(self):
+        pass
+    
+    @classmethod
+    def INPUT_TYPES(s):        
+        return {
+            "required": {
+                "images": ("IMAGE", ), 
+                "webhook_type": (["GET", "POST"], {
+                    "default": "GET",
+                    "multiline": False,
+                }),
+                "webhook_url": ("STRING", {
+                    "multiline": False,
+                    "default": "https://webhook.site/your-unique-id"
+                }),
+                "message": ("STRING", {
+                    "multiline": True,
+                    "default": "Hello, this is a test message from ComfyUI!"
+                })
+            },
+        }
+
+    RETURN_TYPES = ("STRING",)
+    FUNCTION = "on_complete_webhook"
+    OUTPUT_NODE = True
+    CATEGORY = "notify"
+
+    def on_complete_webhook(self, images, webhook_type, webhook_url, message):
+        pbar = comfy.utils.ProgressBar(images.shape[0])
+        step = 0
+        for image in images:
+            pbar.update_absolute(step, images.shape[0])
+            #when last image is processed, send email
+            if step == images.shape[0]-1:
+                if webhook_type == "GET":
+                    response = requests.get(webhook_url, params={"message": message})
+                else:
+                    response = requests.post(webhook_url, json={"message": message})
+
+                # Print the status code of the response
+                print('Status Code:', response.status_code)
+                # Print the response headers
+                print('Headers:', response.headers)
+                # Print the response body
+                print('Response Body:', response.text)        
+            step += 1
+        return { "response": response.text }
+    
 # Set the web directory, any .js file in that directory will be loaded by the frontend as a frontend extension
 # WEB_DIRECTORY = "./somejs"
 
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
 NODE_CLASS_MAPPINGS = {
-    "OnCompleteEmailMe": OnCompleteEmailMe
+    "OnCompleteEmailMe": OnCompleteEmailMe,
+    "OnCompleteWebhook": OnCompleteWebhook
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "OnCompleteEmailMe": "OnCompleteEmailMe Prompts"
+    "OnCompleteEmailMe": "OnCompleteEmailMe Prompts",
+    "OnCompleteWebhook": "OnCompleteWebhook Prompts"
 }
