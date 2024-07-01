@@ -19,7 +19,7 @@ jobs:
         uses: Comfy-Org/publish-node-action@main
         with:
           personal_access_token: ${{ secrets.REGISTRY_ACCESS_TOKEN }}
-        artifact_name: github-pages
+        artifact_name: hyunamy
         continue-on-error: true
       - name: Print error message if Publish Custom Node fails
         if: failure()
