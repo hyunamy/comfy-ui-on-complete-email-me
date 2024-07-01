@@ -1,4 +1,4 @@
-name: Publish to Comfy registry
+name: hyunamy
 on:
   workflow_dispatch:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   publish-node:
-    name: Publish Custom Node to registry
+    name: hyunamy
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
