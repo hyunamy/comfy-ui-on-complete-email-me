@@ -54,7 +54,8 @@ OnCompleteWebhook 노드를 사용하면 외부 서비스와 통합하여 다양
 
 Q. 앱 비밀번호를 입력해도 이메일이 전송되지 않습니다.
 
-A. ASCII 문자가 앱 비밀번호에 포함될 수 있습니다. 공백을 수정한 후 앱 비밀번호를 다시 적용해 보세요. (Failed to send email: 'ascii' codec can't encode character '\xa0' in position 25: ordinal not in range) <- ASCII 문제
+A. ASCII 문자가 앱 비밀번호에 포함될 수 있습니다. 공백을 수정한 후 앱 비밀번호를 다시 적용해 보세요. 
+(Failed to send email: 'ascii' codec can't encode character '\xa0' in position 25: ordinal not in range) <- ASCII 문제
 
 
 ##업데이트 (2025.01.15)
