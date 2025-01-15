@@ -58,6 +58,7 @@ Please update your workflows and check out the new functionality.
 Q. Even after entering the app password, emails are not being sent.
 
 A. ASCII characters may be included in the app password. Please try reapplying the app password after correcting any spaces.
+(Failed to send email: 'ascii' codec can't encode character '\xa0' in position 25: ordinal not in range) <- ASCII problem
 
 ## Update (2025.01.15)
 
