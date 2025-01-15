@@ -61,9 +61,11 @@ A. ASCII characters may be included in the app password. Please try reapplying t
 
 ## Update (2025.01.15)
 
-A new feature has been added to attach the last generated image to the email.
+- A new feature has been added to attach the last generated image to the email.
 
-OnCompletePlaySound node has been added. You can now receive sound notifications upon completion.
+![image](https://github.com/user-attachments/assets/e81f7c31-5cca-4847-9038-1c8988646a5e)
+
+- OnCompletePlaySound node has been added. You can now receive sound notifications upon completion.
 
 ## License
 
