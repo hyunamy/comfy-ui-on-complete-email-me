@@ -5,6 +5,12 @@
 
 A feature that sends an email via Gmail once image generation is completed in Comfy-ui.
 
+# ComfyUI Notifications
+
+- On Complete play sound node 
+- On Complete Email me node
+- On Complete webhook node
+
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
