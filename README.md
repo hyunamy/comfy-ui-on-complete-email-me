@@ -5,6 +5,12 @@
 
 A feature that sends an email via Gmail once image generation is completed in Comfy-ui.
 
+# ComfyUI Notifications
+
+- On Complete play sound node 
+- On Complete Email me node
+- On Complete webhook node
+
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
@@ -58,12 +64,13 @@ Please update your workflows and check out the new functionality.
 Q. Even after entering the app password, emails are not being sent.
 
 A. ASCII characters may be included in the app password. Please try reapplying the app password after correcting any spaces.
+(Failed to send email: 'ascii' codec can't encode character '\xa0' in position 25: ordinal not in range) <- ASCII problem
 
 ## Update (2025.01.15)
 
 - A new feature has been added to attach the last generated image to the email.
 
-![image](https://github.com/user-attachments/assets/e81f7c31-5cca-4847-9038-1c8988646a5e)
+![image](https://github.com/user-attachments/assets/427d945a-10da-41eb-9579-416952885c85)
 
 - OnCompletePlaySound node has been added. You can now receive sound notifications upon completion.
 
