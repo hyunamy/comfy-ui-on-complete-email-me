@@ -1,0 +1,6 @@
+pygame>=2.0.0
+requests
+numpy
+pillow
+smtplib
+comfy-utils

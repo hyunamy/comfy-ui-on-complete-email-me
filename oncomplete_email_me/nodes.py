@@ -4,13 +4,12 @@ import smtplib
 import os
 import comfy.utils
 import re
+import pygame
 from PIL import Image  # Pillow의 Image 모듈 가져오기
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
-
-
 
 data = b'\xe3\x81\x82\xe3\x81\x84\xe3\x81\x86'  # 일본어 유니코드 문자열의 바이너리
 
@@ -153,7 +152,7 @@ class OnCompleteEmailMe:
 
         print(f"Email sending success: {success}")
         return {}
-
+    
 # Integration with ComfyUI
 class OnCompleteWebhook:
     
@@ -213,6 +212,36 @@ class OnCompleteWebhook:
             step += 1
         return { "response": response.text }
     
+
+
+class OnCompletePlaySound:
+    def __init__(self):
+        pass
+    
+    @classmethod
+    def INPUT_TYPES(s):        
+        return {
+            "required": {
+                "images": ("IMAGE", )
+            }
+        }
+
+    RETURN_TYPES = ()
+    FUNCTION = "on_complete_playsound"
+    OUTPUT_NODE = True
+    CATEGORY = "notify"
+
+    def on_complete_playsound(self, images):
+        # Play sound
+        currentFolder = os.path.dirname(os.path.abspath(__file__))
+        assetFolder = os.path.join(currentFolder, "assets")
+
+        pygame.init()
+        pygame.mixer.music.load(os.path.join(assetFolder, "finished.mp3"))
+        pygame.mixer.music.play()
+        return { }
+    
+
 # Set the web directory, any .js file in that directory will be loaded by the frontend as a frontend extension
 # WEB_DIRECTORY = "./somejs"
 
@@ -220,11 +249,13 @@ class OnCompleteWebhook:
 # NOTE: names should be globally unique
 NODE_CLASS_MAPPINGS = {
     "OnCompleteEmailMe": OnCompleteEmailMe,
-    "OnCompleteWebhook": OnCompleteWebhook
+    "OnCompleteWebhook": OnCompleteWebhook,
+    "OnCompletePlaySound": OnCompletePlaySound
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
 NODE_DISPLAY_NAME_MAPPINGS = {
     "OnCompleteEmailMe": "OnCompleteEmailMe Prompts",
-    "OnCompleteWebhook": "OnCompleteWebhook Prompts"
+    "OnCompleteWebhook": "OnCompleteWebhook Prompts",
+    "OnCompletePlaySound": "OnCompletePlaySound Prompts"
 }
