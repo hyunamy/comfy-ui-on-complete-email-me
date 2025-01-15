@@ -87,12 +87,7 @@ class OnCompleteEmailMe:
                 "message": ("STRING", {
                     "multiline": True,
                     "default": "Hello, this is a test email from ComfyUI!",
-                }),
-                "include_last_image": ("STRING", {
-                    "options": ["Yes", "No"],
-                    "default": "No",
-                    "label": "Attach the last processed image"
-                }),
+                })
             },
         }
 
@@ -102,47 +97,45 @@ class OnCompleteEmailMe:
     CATEGORY = "utils"
     
 
-    def on_complete_email_me(self, images, sender_email, sender_password, recipient_emails, message, include_last_image):
+    def on_complete_email_me(self, images, sender_email, sender_password, recipient_emails, message):
         attachments = []
 
-        # 마지막 이미지를 첨부할지 여부를 확인
-        if include_last_image == "Yes" and len(images) > 0:
-            
-            print("Attatching the last processed image...")
+        # 마지막 이미지를 첨부할지 여부를 확인        
+        print("Attatching the last processed image...")
 
-            # ComfyUI 이미지 데이터를 NumPy 배열로 변환
-            image_data = images[-1]
-            if isinstance(image_data, np.ndarray):
-                image_array = image_data
+        # ComfyUI 이미지 데이터를 NumPy 배열로 변환
+        image_data = images[-1]
+        if isinstance(image_data, np.ndarray):
+            image_array = image_data
+        else:
+            image_array = np.asarray(image_data)
+
+        # NumPy 배열을 uint8로 변환
+        if image_array.dtype != np.uint8:
+            # 데이터가 [0, 1] 범위라면 255를 곱하고 uint8로 변환
+            if image_array.max() <= 1.0:
+                image_array = (image_array * 255).astype(np.uint8)
             else:
-                image_array = np.asarray(image_data)
+                raise ValueError("Unsupported data range. Ensure values are in the range [0, 1] or uint8.")
 
-            # NumPy 배열을 uint8로 변환
-            if image_array.dtype != np.uint8:
-                # 데이터가 [0, 1] 범위라면 255를 곱하고 uint8로 변환
-                if image_array.max() <= 1.0:
-                    image_array = (image_array * 255).astype(np.uint8)
-                else:
-                    raise ValueError("Unsupported data range. Ensure values are in the range [0, 1] or uint8.")
+        # NumPy 배열이 RGB인지 확인
+        if len(image_array.shape) == 3 and image_array.shape[2] in [3, 4]:
+            pil_image = Image.fromarray(image_array[:, :, :3])  # 알파 채널 제거
+        elif len(image_array.shape) == 2:  # Grayscale 이미지
+            pil_image = Image.fromarray(image_array)
+        else:
+            raise ValueError("Unsupported image array format")
 
-            # NumPy 배열이 RGB인지 확인
-            if len(image_array.shape) == 3 and image_array.shape[2] in [3, 4]:
-                pil_image = Image.fromarray(image_array[:, :, :3])  # 알파 채널 제거
-            elif len(image_array.shape) == 2:  # Grayscale 이미지
-                pil_image = Image.fromarray(image_array)
-            else:
-                raise ValueError("Unsupported image array format")
+            # 파일 경로와 디렉토리 설정
+        tmp_dir = "C:\\tmp"
+        last_image_path = os.path.join(tmp_dir, "last_processed_image.jpg")
 
-              # 파일 경로와 디렉토리 설정
-            tmp_dir = "C:\\tmp"
-            last_image_path = os.path.join(tmp_dir, "last_processed_image.jpg")
+        # 디렉토리가 존재하지 않으면 생성
+        os.makedirs(tmp_dir, exist_ok=True)
 
-            # 디렉토리가 존재하지 않으면 생성
-            os.makedirs(tmp_dir, exist_ok=True)
-
-            # PIL 이미지를 파일로 저장
-            pil_image.save(last_image_path, "JPEG")
-            attachments.append(last_image_path)
+        # PIL 이미지를 파일로 저장
+        pil_image.save(last_image_path, "JPEG")
+        attachments.append(last_image_path)
 
         subject = "ComfyUI OnComplete Email"
         body = message
