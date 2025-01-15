@@ -62,7 +62,7 @@ A. ASCII 문자가 앱 비밀번호에 포함될 수 있습니다. 공백을 수
 
 - 마지막으로 생성된 이미지를 이메일에 첨부하는 기능이 추가되었습니다.
 
-![image](https://github.com/user-attachments/assets/ae0a4dd1-78ed-4c38-95e5-287246c88bc0)
+![image](https://github.com/user-attachments/assets/84c1ef4a-2996-4a69-b7b9-e8c7416cc731)
 
 - OnCompletePlaySound 노드가 추가되었습니다. 이제 완료 시 소리로 알림을 받을 수 있습니다.
 
