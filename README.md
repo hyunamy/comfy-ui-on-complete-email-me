@@ -53,6 +53,18 @@ By using the OnCompleteWebhook node, you can integrate with external services an
 
 Please update your workflows and check out the new functionality.
 
+## FAQ
+
+Q. Even after entering the app password, emails are not being sent.
+
+A. ASCII characters may be included in the app password. Please try reapplying the app password after correcting any spaces.
+
+## Update (2025.01.15)
+
+A new feature has been added to attach the last generated image to the email.
+
+OnCompletePlaySound node has been added. You can now receive sound notifications upon completion.
+
 ## License
 
 This project is licensed under the GPL-3.0 License. See the LICENSE file for details.
