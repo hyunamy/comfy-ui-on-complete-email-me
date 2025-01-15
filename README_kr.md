@@ -50,6 +50,21 @@ OnCompleteWebhook 노드를 사용하면 외부 서비스와 통합하여 다양
 
 워크플로우를 업데이트하고 새로운 기능을 확인해보세요.
 
+##FAQ
+
+Q. 앱 비밀번호를 입력해도 이메일이 전송되지 않습니다.
+
+A. ASCII 문자가 앱 비밀번호에 포함될 수 있습니다. 공백을 수정한 후 앱 비밀번호를 다시 적용해 보세요. (Failed to send email: 'ascii' codec can't encode character '\xa0' in position 25: ordinal not in range) <- ASCII 문제
+
+
+##업데이트 (2025.01.15)
+
+- 마지막으로 생성된 이미지를 이메일에 첨부하는 기능이 추가되었습니다.
+
+![image](https://github.com/user-attachments/assets/1d0bb621-59d7-4c75-a0d5-ca1bd24b5a64)
+
+- OnCompletePlaySound 노드가 추가되었습니다. 이제 완료 시 소리로 알림을 받을 수 있습니다.
+
 ## 라이선스
 
 이 프로젝트는 GPL-3.0 라이선스에 따라 라이선스가 부여됩니다. 자세한 내용은 LICENSE 파일을 참조하세요.
