@@ -2,6 +2,21 @@
 
 [한국어](./README_kr.md) | [English](/)
 ---
+## FAQ
+
+Q. Even after entering the app password, emails are not being sent.
+
+A. ASCII characters may be included in the app password. Please try reapplying the app password after correcting any spaces.
+(Failed to send email: 'ascii' codec can't encode character '\xa0' in position 25: ordinal not in range) <- ASCII problem
+
+## Update (2025.01.15)
+
+- A new feature has been added to attach the last generated image to the email.
+
+![image](https://github.com/user-attachments/assets/427d945a-10da-41eb-9579-416952885c85)
+
+- OnCompletePlaySound node has been added. You can now receive sound notifications upon completion.
+
 
 A feature that sends an email via Gmail once image generation is completed in Comfy-ui.
 
@@ -58,21 +73,6 @@ Ensure the node is triggered upon the completion of the desired task or event.
 By using the OnCompleteWebhook node, you can integrate with external services and get notified about the completion of various processes.
 
 Please update your workflows and check out the new functionality.
-
-## FAQ
-
-Q. Even after entering the app password, emails are not being sent.
-
-A. ASCII characters may be included in the app password. Please try reapplying the app password after correcting any spaces.
-(Failed to send email: 'ascii' codec can't encode character '\xa0' in position 25: ordinal not in range) <- ASCII problem
-
-## Update (2025.01.15)
-
-- A new feature has been added to attach the last generated image to the email.
-
-![image](https://github.com/user-attachments/assets/427d945a-10da-41eb-9579-416952885c85)
-
-- OnCompletePlaySound node has been added. You can now receive sound notifications upon completion.
 
 ## License
 
