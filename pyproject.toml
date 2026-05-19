@@ -8,6 +8,7 @@ dependencies = []
 
 [project.urls]
 Repository = "https://github.com/bobddadoo/comfy-ui-on-complete-email-me"
+Funding = "https://github.com/sponsors/bobddadoo"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
